@@ -456,9 +456,7 @@ class WeatherMapDataSource_rrd extends WeatherMapDataSource {
 			// fgets($pipe, 4096); // skip the blank line
 			$buffer = '';
 
-			while (!feof($pipe)) {
-				$line = fgets($pipe, 4096);
-
+			while (($line = fgets($pipe, 4096)) !== false) {
 				// there might (pre-1.5) or might not (1.5+) be a leading blank line
 				// we don't want to count it if there is
 				if (trim($line) != '') {
